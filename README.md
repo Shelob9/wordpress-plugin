@@ -2,6 +2,10 @@
 
 [Josh](https://joshpress.net)'s opinionated boilerplate and template for WordPress plugin. Josh-style -- PSR-4, TypeScript, Docker, Github actions for test automation.
 
+![JavaScripts](https://github.com/Shelob9/wordpress-plugin/workflows/JavaScripts/badge.svg)
+![PHP Unit Tests](https://github.com/Shelob9/wordpress-plugin/workflows/PHP%20Unit%20Tests/badge.svg)
+![WordPress Tests](https://github.com/Shelob9/wordpress-plugin/workflows/WordPress%20Tests/badge.svg)
+
 - [PHP](#php)
 - [JavaScript](#javascript)
   - Write and test React components with TypeScript, preview with [Storybook](https://storybook.js.org/) and compile to JavaScript. Uses [tsdx](https://github.com/formium/tsdx).
