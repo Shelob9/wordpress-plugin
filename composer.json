@@ -1,0 +1,21 @@
+{
+  "require": {
+    "phpunit/phpunit": "^8.0"
+  },
+  "require-dev": {
+    "yoast/phpunit-polyfills": "^0.1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Josh\\WordPressPlugin\\": "./php"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Josh\\WordPressPlugin\\Tests\\": "./tests"
+    }
+  },
+  "scripts": {
+    "test": "phpunit ./tests/Unit/SampleTest.php --config=phpunit-unit.xml"
+  }
+}

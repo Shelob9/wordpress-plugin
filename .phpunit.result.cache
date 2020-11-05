@@ -1,0 +1,1 @@
+C:37:"PHPUnit\Runner\DefaultTestResultCache":236:{a:2:{s:7:"defects";a:1:{s:47:"Vendor\YourPackage\Tests\FooTest::testSomething";i:3;}s:5:"times";a:2:{s:47:"Vendor\YourPackage\Tests\FooTest::testSomething";d:0.003;s:54:"Josh\WordPressPlugin\Tests\Unit\FooTest::testSomething";d:0.002;}}}
