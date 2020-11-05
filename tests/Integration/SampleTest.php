@@ -1,4 +1,5 @@
 <?php
+namespace Josh\WordPressPlugin\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
 

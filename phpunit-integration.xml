@@ -8,7 +8,7 @@
 	>
 	<testsuites>
 		<testsuite name="integration">
-			<directory prefix="test-" suffix=".php">./tests/Integration</directory>
+			<directory>./tests/Integration</directory>
 		</testsuite>
 	</testsuites>
 </phpunit>
