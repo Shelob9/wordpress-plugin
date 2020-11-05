@@ -15,4 +15,16 @@ class SampleTest extends TestCase {
 		// Replace this with some actual testing code.
 		$this->assertTrue( true );
 	}
+
+	function testWordPress()
+    {
+        global  $wpdb;
+        $this->assertTrue(is_object($wpdb));
+        $id = wp_insert_post([
+            'post_type' => 'post',
+            'post_title' => 'roy',
+            'post_content' => 'sivan'
+        ]);
+        $this->assertTrue(is_numeric($id));
+    }
 }
