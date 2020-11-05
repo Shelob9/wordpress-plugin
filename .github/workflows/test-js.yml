@@ -1,13 +1,10 @@
-# This is a basic workflow to help you get started with Actions
 
-name: CI
+name: JavaScripts
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the main branch
+
 on:
   [push]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   buildAndTest:
     name: Build and Test
@@ -17,6 +14,9 @@ jobs:
 
       - name: Install dependencies
         run: yarn
+
+      - name: Build components
+        run: yarn c build
 
       - name: Test
         run: yarn test:ci
