@@ -9,9 +9,8 @@ use Josh\WordPressPlugin\Plugin;
  *
  * They are useful for debugging.
  */
-class EnvironmentTest extends UnitTestCase
+class EnvironmentTest extends TestCase
 {
-
     /**
      * A sample test showing that polyfills work
      *

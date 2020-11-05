@@ -3,10 +3,9 @@
 
 namespace Josh\WordPressPlugin\Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
 use Yoast\PHPUnitPolyfills\Polyfills\AssertIsType;
 
-class UnitTestCase extends  TestCase
+class TestCase extends \PHPUnit\Framework\TestCase
 {
     use AssertIsType;
 

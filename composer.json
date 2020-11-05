@@ -17,6 +17,6 @@
     }
   },
   "scripts": {
-    "test": "phpunit ./tests/Unit/SampleTest.php --config=phpunit-unit.xml"
+    "test": "phpunit --config=phpunit-unit.xml"
   }
 }

@@ -1,7 +1,7 @@
 <?php
 namespace Josh\WordPressPlugin\Tests\Integration;
 
-use PHPUnit\Framework\TestCase;
+use Josh\WordPressPlugin\Tests\Unit\TestCase;
 
 /**
  * These tests proves integration test setup works.
@@ -10,6 +10,16 @@ use PHPUnit\Framework\TestCase;
  */
 class EnvironmentTest extends TestCase {
 
+    /**
+     * A sample test showing that polyfills work
+     *
+     * @see https://github.com/Yoast/PHPUnit-Polyfills#using-this-library
+     */
+    public function testPolyfills()
+    {
+        $this->assertIsBool( true );
+        self::assertIsNotIterable( new \stdClass() );
+    }
 
     /**
      * This tests makes sure:
