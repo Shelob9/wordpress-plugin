@@ -8,6 +8,7 @@ Boilerplate and template for WordPress plugin. Josh-style -- PSR-4, TypeScript, 
   - Create WordPress-safe bundles with [@wordpress/scripts]
 - [Local Development](#local-development)
   - Requires Docker.
+- [CI/CD](#cicd)
 
 ## PHP
 
@@ -80,3 +81,19 @@ All commands for the components library can be run with `yarn p <command>`. For 
 ## Local Development
 
 If you would like to use the local development environment, you may start it by running `npx wp-env start` and stop it with `npx wp-env stop`.
+
+## CI/CD
+
+
+## CI
+There are three Github action that run tests:
+
+- php-unit.yml
+    - PHP unit tests.
+- wordpress.yml
+   - PHP integration tests
+   - Probably acceptance tests soon.
+- test-js.yml
+    - [Java/Type]Script tests.
+
+## CD
