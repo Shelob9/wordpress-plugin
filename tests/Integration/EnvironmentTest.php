@@ -30,12 +30,12 @@ class EnvironmentTest extends TestCase {
 	function testWordPress()
     {
         global  $wpdb;
-        $this->assertTrue(is_object($wpdb));
+        $this->assertIsObject($wpdb);
         $id = wp_insert_post([
             'post_type' => 'post',
             'post_title' => 'roy',
             'post_content' => 'sivan'
         ]);
-        $this->assertTrue(is_numeric($id));
+        $this->assertIsNumeric($id);
     }
 }
