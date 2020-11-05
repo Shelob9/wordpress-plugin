@@ -20,6 +20,7 @@
 		"@wordpress/scripts": "@latest"
 	},
 	"dependencies": {
+		"@axe-core/react": "^4.0.0",
 		"@wordpress/block-editor": "@latest",
 		"@wordpress/blocks": "@latest",
 		"@wordpress/components": "@latest",

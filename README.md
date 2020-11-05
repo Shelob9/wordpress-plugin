@@ -1,11 +1,14 @@
 # WordPress Plugin
 
-Boilerplate and template for WordPress plugin. Josh-style -- PSR-4, TypeScript, Docker, Github actions for test automation.
+[Josh](https://joshpress.net)'s opinionated boilerplate and template for WordPress plugin. Josh-style -- PSR-4, TypeScript, Docker, Github actions for test automation.
 
 - [PHP](#php)
 - [JavaScript](#javascript)
   - Write and test React components with TypeScript, preview with [Storybook](https://storybook.js.org/) and compile to JavaScript. Uses [tsdx](https://github.com/formium/tsdx).
-  - Create WordPress-safe bundles with [@wordpress/scripts]
+  - Create WordPress-safe bundles with [@wordpress/scripts](https://developer.wordpress.org/block-editor/packages/packages-scripts/)
+  - Testing with:
+    - [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/)
+    - [@axe-core/react](https://www.npmjs.com/package/@axe-core/react)
 - [Local Development](#local-development)
   - Requires Docker.
 - [CI/CD](#cicd)
