@@ -8,5 +8,10 @@
 		"WP_DEBUG_LOG": true,
 		"WP_DEBUG_DISPLAY": false
 	},
-	"port": 2112
+	"port": 4013,
+	"env": {
+		"tests": {
+			"port": 4012
+		}
+	}
 }

@@ -22,11 +22,6 @@
 		"wsrun": "^5.2.0"
 	},
 	"scripts": {
-		"start:wp": "yarn wp:start",
-		"wp:start": "yarn wp-env start",
-		"wp:stop": "yarn wp-env stop",
-		"wp:destroy": "yarn wp-env destroy",
-		"wp:cli": "wp-env run cli wp",
 		"packages-update": "wp-scripts packages-update",
 		"start": "yarn wsrun start",
 		"c": "yarn workspace components",

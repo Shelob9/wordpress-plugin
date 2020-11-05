@@ -1,4 +1,4 @@
-import{ Layout }  from "components";
+import { Layout }  from "components";
 
 import React from "react";
 import { render } from "@wordpress/element";
