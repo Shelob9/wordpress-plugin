@@ -1,7 +1,7 @@
 # Based on https://github.com/wp-cli/scaffold-command/blob/f9bad3dd7224d5684d950d31c486df70905e386f/templates/plugin-github.mustache
-name: Tests
+name: WordPress Tests
 
-on: [ push ]
+on: [pull_request]
 
 env:
   WP_TESTS_DIR: /github/home/wp-tests/wordpress-tests-lib
@@ -51,4 +51,4 @@ jobs:
 
 
       - name: Tests
-        run: $HOME/.composer/vendor/bin/phpunit
+        run: $HOME/.composer/vendor/bin/phpunit --config=phpunit-integration.xml
