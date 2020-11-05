@@ -1,0 +1,38 @@
+{
+	"name": "@shelob9/wordpress-plugin",
+	"version": "0.0.1",
+	"main": "index.js",
+	"author": "Josh Pollock <josh@joshpress.net>",
+	"license": "GPL-2.0",
+	"private": true,
+	"workspaces": [
+		"pages",
+		"components"
+	],
+	"wp-env": {
+		"plugin-dir": "wordpress-plugin",
+		"plugin-name": "WordPress Plugin",
+		"welcome-logo": [
+			"Hi Roy"
+		]
+	},
+	"dependencies": {
+		"@wordpress/env": "@latest",
+		"@wordpress/scripts": "@latest",
+		"wsrun": "^5.2.0"
+	},
+	"scripts": {
+		"start:wp": "yarn wp:start",
+		"wp:start": "yarn wp-env start",
+		"wp:stop": "yarn wp-env stop",
+		"wp:destroy": "yarn wp-env destroy",
+		"wp:cli": "wp-env run cli wp",
+		"packages-update": "wp-scripts packages-update",
+		"start": "yarn wsrun start",
+		"c": "yarn workspace components",
+		"p": "yarn workspace pages",
+		"storybook": "yarn c storybook",
+		"test:ci": "yarn c test --ci && yarn p test --ci",
+		"build": "yarn c build && yarn p build"
+	}
+}

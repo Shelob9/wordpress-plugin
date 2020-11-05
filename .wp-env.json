@@ -1,0 +1,12 @@
+{
+	"plugins": [
+		".",
+		"https://downloads.wordpress.org/plugin/headless-mode.0.2.0.zip"
+	],
+	"config": {
+		"WP_DEBUG": true,
+		"WP_DEBUG_LOG": true,
+		"WP_DEBUG_DISPLAY": false
+	},
+	"port": 2112
+}
