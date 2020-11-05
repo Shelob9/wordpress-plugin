@@ -1,4 +1,4 @@
-name: PHP Unit Tets
+name: PHP Unit Tests
 
 on: push
 
@@ -8,23 +8,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-      
-    # Install composer with cache
-   ## See https://github.com/marketplace/actions/setup-php-action#cache-composer-dependencies
-    - name: Get composer cache directory
-      id: composercache
-      run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-    - name: Cache dependencies
-      uses: actions/cache@v2
-      with:
-        path:${{ steps.composercache.outputs.dir }}
-        key: unit-${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-        restore-keys: ${{ runner.os }}-composer-
-    - name: Install dependencies
-      run: composer install --prefer-dist
-      
-    # Run unit tests
-    - name : Unit Tests
-      run: composer test
+      - uses: actions/checkout@v2
+
+      # Install composer with cache
+      ## See https://github.com/marketplace/actions/setup-php-action#cache-composer-dependencies
+      - name: Get composer cache directory
+        id: composercache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composercache.outputs.dir }}
+          key: php-${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+      - name: Install dependencies
+        run: composer install --prefer-dist
+
+      # Run unit tests
+      - name : Unit Tests
+        run: composer test
   
