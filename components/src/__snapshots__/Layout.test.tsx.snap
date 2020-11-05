@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout Lays it out 1`] = `
+<div>
+  <div>
+    Hi Roy
+  </div>
+</div>
+`;
