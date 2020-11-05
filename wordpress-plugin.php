@@ -3,6 +3,10 @@
 /**
  * Plugin Name: WordPress plugin
  */
+add_action( 'plugins_loaded', function (){
+    include __DIR__ . '/vendor/autoload.php';
+});
+
 add_action('init', 'wordPressPlugin');
 add_action('init', function () {
     registerAsset('admin');
