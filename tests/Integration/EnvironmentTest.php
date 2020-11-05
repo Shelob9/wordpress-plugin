@@ -4,18 +4,19 @@ namespace Josh\WordPressPlugin\Tests\Integration;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Sample test case.
+ * These tests proves integration test setup works.
+ *
+ * They are useful for debugging, you may choose to delete
  */
-class SampleTest extends TestCase {
+class EnvironmentTest extends TestCase {
 
-	/**
-	 * A single example test.
-	 */
-	function test_sample() {
-		// Replace this with some actual testing code.
-		$this->assertTrue( true );
-	}
 
+    /**
+     * This tests makes sure:
+     *
+     * - WordPress functions are defined
+     * - WordPress database can be written to.
+     */
 	function testWordPress()
     {
         global  $wpdb;
