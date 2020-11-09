@@ -38,8 +38,14 @@ The php tests are separated into two genres:
   - `composer test`
   - [Using Yoast/yoast-test-helper](https://github.com/Yoast/yoast-test-helper)
 - Run WordPress Integration Tests
-  - `wp-env run phpunit phpunit --config=phpunit-integration.xml`
-  - Requires [@wordpress/env](https://developer.wordpress.org/block-editor/packages/packages-env/)
+  - If supplying your own test setup and database:
+    - `composer test:wordpress`
+  - Using supplied docker-compose:
+    - `docker-compose run phpunit`
+        - This puts you inside phpunit container with database setup.
+    - `composer install` # install for development inside of the container.
+    - `composer:test:wordpress`
+  - Using [futureys/phpunit-wordpress-plugin](https://hub.docker.com/r/futureys/phpunit-wordpress-plugin)
 
 ## JavaScript
 
@@ -86,8 +92,11 @@ All commands for the components library can be run with `yarn p <command>`. For 
 - `yarn p build`
 
 ## Local Development
+> Requires [@wordpress/env](https://developer.wordpress.org/block-editor/packages/packages-env/)
 
 If you would like to use the local development environment, you may start it by running `npx wp-env start` and stop it with `npx wp-env stop`.
+
+- [http://localhost:4242]([http://localhost:4242)
 
 ## CI/CD
 

@@ -118,3 +118,4 @@ dist
 vendor
 wordpress
 build
+.phpunit.result.cache
