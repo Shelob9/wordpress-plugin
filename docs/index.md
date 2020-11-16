@@ -1,37 +1,13 @@
-## Welcome to GitHub Pages
+# WordPress Plugin
 
-You can use the [editor on GitHub](https://github.com/Shelob9/wordpress-plugin/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+This is my -- [Josh Pollock](https://joshpress.net) -- opinionated boilerplate and template for WordPress plugin with PSR-4 autoloader, TypeScript, Docker, Github actions, and other fun stuff.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Creating A Plugin
 
-### Markdown
+This plugin is a template.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Shelob9/wordpress-plugin/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## Using The Plugin
+- [PHP](https://shelob9.github.io/wordpress-plugin/php)
+- [JavaScript](https://shelob9.github.io/wordpress-plugin/javascript)
+- [Local Development](https://shelob9.github.io/wordpress-plugin/local-dev)
+- [CI/CD](https://shelob9.github.io/wordpress-plugin/cicd)
