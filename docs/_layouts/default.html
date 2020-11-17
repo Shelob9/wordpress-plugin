@@ -31,8 +31,12 @@
         <img src="{{site.logo | relative_url}}" alt="Logo" />
         {% endif %}
 
+        <p>{{ site.description | default: site.github.project_tagline }}</p>
+
         <table>
-            <caption class="visually-hidden">Documentation</caption>
+            <caption>
+                Documentation
+            </caption>
             <thead>
             <tr>
                 <th class="visually-hidden">
@@ -41,39 +45,36 @@
             </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th>
-                        <a href="https://shelob9.github.io/wordpress-plugin">Getting Started</a>
-                    </th>
-                </tr>
-                <tr>
-                    <th>
-                        <a href="https://shelob9.github.io/wordpress-plugin/php">PHP</a>
-                    </th>
-                </tr>
-                <tr>
-                    <th>
-                        <a href="https://shelob9.github.io/wordpress-plugin/javascript">JavaScript</a>
-                    </th>
-                </tr>
-                <tr>
-                    <th>
-                        <a href="https://shelob9.github.io/wordpress-plugin/local-dev">Local Development</a>
-                    </th>
-                </tr>
+            <tr>
+                <th>
+                    <a href="https://shelob9.github.io/wordpress-plugin">Getting Started</a>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <a href="https://shelob9.github.io/wordpress-plugin/php">PHP</a>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <a href="https://shelob9.github.io/wordpress-plugin/javascript">JavaScript</a>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <a href="https://shelob9.github.io/wordpress-plugin/local-dev">Local Development</a>
+                </th>
+            </tr>
 
-                <tr>
-                    <th>
-                        <a href="https://shelob9.github.io/wordpress-plugin/cicd">
-                            CI/ CD
-                        </a>
-                    </th>
-                </tr>
+            <tr>
+                <th>
+                    <a href="https://shelob9.github.io/wordpress-plugin/cicd">
+                        CI/ CD
+                    </a>
+                </th>
+            </tr>
             </tbody>
         </table>
-
-        <p>{{ site.description | default: site.github.project_tagline }}</p>
-
         {% if site.github.is_project_page %}
         <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
         {% endif %}
