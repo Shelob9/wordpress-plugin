@@ -1,6 +1,4 @@
-
 name: JavaScripts
-
 
 on:
   [push]
@@ -11,7 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-
+      # Use node 12
+      ## https://github.com/actions/setup-node#usage
+      ## https://github.com/Shelob9/wordpress-plugin/issues/3
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
       - name: Install dependencies
         run: yarn
 
