@@ -10,6 +10,17 @@
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
+    <style>
+        .visually-hidden {
+            clip: rect(0 0 0 0);
+            clip-path: inset(50%);
+            height: 1px;
+            overflow: hidden;
+            position: absolute;
+            white-space: nowrap;
+            width: 1px;
+        }
+    </style>
 </head>
 <body>
 <div class="wrapper">
@@ -21,9 +32,10 @@
         {% endif %}
 
         <table>
+            <caption class="visually-hidden">Documentation</caption>
             <thead>
             <tr>
-                <th>
+                <th class="visually-hidden">
                     Name
                 </th>
             </tr>
@@ -31,7 +43,21 @@
             <tbody>
             <tr>
                 <th>
-                   1
+                    <a href="https://shelob9.github.io/wordpress-plugin">Getting Started</a>
+                </th>
+                <th>
+                    <a href="https://shelob9.github.io/wordpress-plugin/php">PHP</a>
+                </th>
+                <th>
+                    <a href="https://shelob9.github.io/wordpress-plugin/javascript">JavaScript</a>
+                </th>
+                <th>
+                    <a href="https://shelob9.github.io/wordpress-plugin/local-dev">Local Development</a>
+                </th>
+                <th>
+                    <a href="https://shelob9.github.io/wordpress-plugin/cicd">
+                        CI/ CD
+                    </a>
                 </th>
             </tr>
             </tbody>
@@ -47,22 +73,6 @@
         <p class="view"><a href="{{ site.github.owner_url }}">View My GitHub Profile</a></p>
         {% endif %}
 
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        Name
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th>
-                    2
-                </th>
-            </tr>
-            </tbody>
-        </table>
         {% if site.show_downloads %}
         <ul class="downloads">
             <li><a href="{{ site.github.zip_url }}">Download <strong>ZIP File</strong></a></li>
