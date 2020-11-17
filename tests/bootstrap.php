@@ -1,8 +1,8 @@
 <?php
 /**
- * PHPUnit bootstrap file
+ * PHPUnit bootstrap file for setting up WordPress testing.
  *
- * @package Sample_Plugin
+ * For integration tests, not unit tests.
  */
 
 $_tests_dir = getenv( 'WP_TESTS_DIR' );
