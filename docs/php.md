@@ -7,6 +7,8 @@ The php tests are separated into two genres: unit -- located in `/tests/Unit` --
 
 ### Unit Tests
 
+> [Unit Testing Classes That Call Functions From WordPress core](https://dev.to/shelob9/unit-testing-classes-that-call-functions-form-wordpress-core-3h5p)
+
 These tests do NOT run with WordPress and MySQL and are run with phpunit.
 
 - Install for development
@@ -18,7 +20,9 @@ The following unit testing tools are installed:
 - [Yoast/yoast-test-helper](https://github.com/Yoast/yoast-test-helper) - Provides assertions from nwer versions of phpunit so we can use a WordPress-compatible version.
 - [Mockery](http://docs.mockery.io/en/latest) - For mocking classes.
 - [Brain Monkey](https://giuseppe-mazzapica.gitbook.io/brain-monkey/) - For monkey-patching functions.
-  
+
+
+
 ### Integration Tests
 
 - These tests are dependent on WordPress and MySQL and  are run with phpunit.
