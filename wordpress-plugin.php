@@ -7,64 +7,72 @@ add_action( 'plugins_loaded', function (){
     include __DIR__ . '/vendor/autoload.php';
 });
 
-add_action('init', 'wordPressPlugin');
+add_action('init', 'wordpress_plugin');
 add_action('init', function () {
-    registerAsset('wordpress-plugin-');
+    wordpress_plugin_register_asset('wordpress-plugin-admin');
 });
 
 add_action('admin_enqueue_scripts', function ($hook) {
     if ('toplevel_page_custompage' != $hook) {
         return;
     }
-    enqueueAsset('wordpress-plugin-admin');
+    wordpress_plugin_enqueue_asset('wordpress-plugin-admin');
 });
 
-function wordPressPlugin()
+function wordpress_plugin()
 {
     static $wordpressPlugin;
     if (!$wordpressPlugin) {
         $wordpressPlugin = [];
-        do_action('wordPressPlugin', $wordpressPlugin);
+        do_action('wordpress_plugin', $wordpressPlugin);
     }
     return $wordpressPlugin;
 }
 
 
-add_action('wordpress-plugin-_menu', function () {
+add_action('admin_menu', function () {
     add_menu_page(
         __('Custom Menu Title', 'wordpress-plugin'),
         'custom menu',
         'manage_options',
         'custompage',
         function () {
-            enqueueAsset('wordpress-plugin-admin');
+            wordpress_plugin_enqueue_asset('wordpress-plugin-admin');
             esc_html_e('Admin Page Test', 'wordpress-plugin');
             echo '<div id="wordpress-plugin-admin"></div>';
         }
     );
 });
 
-
-function registerAsset($handle)
+/**
+ * Register an asset
+ *
+ * @param $handle
+ */
+function wordpress_plugin_register_asset($handle)
 {
-    if (file_exists(__DIR__ . "/build/$handle.asset.php")) {
+    $_handle = str_replace('wordpress-plugin-', '', $handle );
+    if (file_exists(__DIR__ . "/build/$_handle.asset.php")) {
         // automatically load dependencies and version
-        $assets = include __DIR__ . "/build/$handle.asset.php";
-        $_handle =  'wordpress-plugin-' . $handle;
+        $assets = include __DIR__ . "/build/$_handle.asset.php";
         wp_register_script(
-            $_handle,
-            plugins_url("/build/$handle.js", __FILE__),
+            $handle,
+            plugins_url("/build/$_handle.js", __FILE__),
             $assets['dependencies'],
             $assets['version']
         );
-        wp_enqueue_script($_handle);
+        wp_enqueue_script($handle);
     } else {
-        var_dump(__DIR__ . "/build/$handle.asset.php");
+        var_dump(__DIR__ . "/build/$_handle.asset.php");
     }
 }
 
-function enqueueAsset($handle)
+/**
+ * Enqueue an asset
+ *
+ * @param $handle
+ */
+function wordpress_plugin_enqueue_asset($handle)
 {
-    $handle =  'wordpress-plugin-' . $handle;
     wp_enqueue_script($handle);
 }

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Josh\WordPressPlugin;
+namespace WordPressPlugin;
 
 
 

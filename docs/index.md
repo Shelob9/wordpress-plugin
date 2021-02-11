@@ -15,7 +15,7 @@ After making your own version, I recommend you follow these steps, **before** ru
     - Plugin name in package.json and composer.json
     - `tests/bootstrap.php` includes main plugin file.
 1. In composer.json change `Josh\\WordPressPlugin\\` in both [autoloader](https://getcomposer.org/doc/01-basic-usage.md#autoloading) to match your new root namespace.
-1. Find and replace `Josh\WordPressPlugin` in php files with your root namespace.
+1. Find and replace `WordPressPlugin` in php files with your root namespace.
 1. Fine and replace `shelob9.gihub.io` with your Github pages site URL.
 1. Enable [Github pages](https://pages.github.com/) for your repo.
     - Now you have a documentation site!

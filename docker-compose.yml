@@ -1,3 +1,5 @@
+# Docker-compose file for running integration tests
+# For local dev, use wp-env: https://shelob9.github.io/wordpress-plugin/local-dev
 version: '3.7'
 services:
   database:

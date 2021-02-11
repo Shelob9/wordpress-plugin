@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Josh\WordPressPlugin\Tests\Unit;
+namespace WordPressPlugin\Tests\Unit;
 
 use Yoast\PHPUnitPolyfills\Polyfills\AssertIsType;
 

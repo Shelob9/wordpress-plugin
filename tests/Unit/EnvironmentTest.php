@@ -1,8 +1,8 @@
 <?php
 
 
-namespace Josh\WordPressPlugin\Tests\Unit;
-use Josh\WordPressPlugin\Plugin;
+namespace WordPressPlugin\Tests\Unit;
+use WordPressPlugin\Plugin;
 use Brain\Monkey\Functions;
 
 /**

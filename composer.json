@@ -10,12 +10,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Josh\\WordPressPlugin\\": "./php"
+      "WordPressPlugin\\": "./php"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Josh\\WordPressPlugin\\Tests\\": "./tests"
+      "WordPressPlugin\\Tests\\": "./tests"
     }
   },
   "scripts": {
