@@ -9,14 +9,14 @@ add_action( 'plugins_loaded', function (){
 
 add_action('init', 'wordPressPlugin');
 add_action('init', function () {
-    registerAsset('admin');
+    registerAsset('wordpress-plugin-');
 });
 
 add_action('admin_enqueue_scripts', function ($hook) {
     if ('toplevel_page_custompage' != $hook) {
         return;
     }
-    enqueueAsset('admin');
+    enqueueAsset('wordpress-plugin-admin');
 });
 
 function wordPressPlugin()
@@ -30,14 +30,14 @@ function wordPressPlugin()
 }
 
 
-add_action('admin_menu', function () {
+add_action('wordpress-plugin-_menu', function () {
     add_menu_page(
         __('Custom Menu Title', 'wordpress-plugin'),
         'custom menu',
         'manage_options',
         'custompage',
         function () {
-            enqueueAsset('admin');
+            enqueueAsset('wordpress-plugin-admin');
             esc_html_e('Admin Page Test', 'wordpress-plugin');
             echo '<div id="wordpress-plugin-admin"></div>';
         }
