@@ -2,19 +2,23 @@
 const readline = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout
-})
+});
 const shell = require('shelljs');
 
-
-
 function changeNameInPhpFiles({slug,rootNamespace}){
+    let slugWithUnderscore = slug.replace('-', '_' );
     function sed(file) {
         shell.sed('-i', 'WordPressPlugin', `${rootNamespace}\\`, file);
-        shell.sed( '-i', "'wordpress-plugin'",  slug );
+        shell.sed( '-i', "wordpress-plugin",  slug ,file);
+        shell.sed( '-i', "wordpress_plugin",  slugWithUnderscore ,file);
     }
     shell.mv( 'wordpress-plugin.php', `${slug}.php` );
-    shell.cd( 'php');
-    shell.ls('*.php').forEach(sed);
+    sed(`${slug}.php`);
+    shell.sed('-i', 'WordPressPlugin', `${rootNamespace}`, 'composer.json');
+    shell.ls('**/*.php').forEach(sed);
+}
+
+function readme(){
 
 }
 
@@ -25,11 +29,18 @@ function changeNameInPhpFiles({slug,rootNamespace}){
         allTheThingsMode = allTheThingsMode === 'Y' || allTheThingsMode === 'y' || allTheThingsMode === 'Yes' || allTheThingsMode === 'yes';
         if( allTheThingsMode ){
             readline.question(`Root Namespace`, rootNamespace => {
-                changeNameInPhpFiles({slug,rootNamespace})
+                changeNameInPhpFiles({slug,rootNamespace});
+                readme();
                 readline.close()
             });
 
         }else{
+            //move the main file into pages.
+            //rename for main file.
+            //delete everything not in pages.
+            //move everything out of pages to root
+            //delete pages dir
+            //readme
             readline.close()
 
         }
