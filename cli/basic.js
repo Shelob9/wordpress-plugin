@@ -13,12 +13,19 @@ readline.question(`What is your plugin's slug? Used for translation domain, main
         readline.question(`Github username?`, githubUserName => {
             const mdSed = mdSedFactory({pluginName,slug,githubUserName});
             let phpSed = phpSedFactory({slug})
+            //Copy everything in pages to new dir
             shell.cp( '-R', 'pages', slug );
+            //Copy readme basic in place of package README
             shell.cp( '_README_BASIC.md', `${slug}/README.md`);
+            //And rename things.
             mdSed( `${slug}/README.md` );
+            //Copy main plugin file
             shell.cp( 'wordpress-plugin.php', `${slug}/${slug}.php`);
+            //And rename things.
             phpSed( `${slug}/${slug}.php` );
             shell.sed('-i', "PLUGIN_NAME", pluginName,  `${slug}/${slug}.php`);
+            //Copy JS test action
+            shell.cp( '.github/workflows/test-js.yml', `${slug}/.github/workflows/test-js.yml`);
             readline.close()
         });
     });
