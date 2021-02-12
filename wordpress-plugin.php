@@ -3,51 +3,75 @@
 /**
  * Plugin Name: WordPress plugin
  */
+
+/**
+ * Load the autoloader
+ */
 add_action( 'plugins_loaded', function (){
     include __DIR__ . '/vendor/autoload.php';
 });
 
-add_action('init', 'wordpress_plugin');
-add_action('init', function () {
-    wordpress_plugin_register_asset('wordpress-plugin-admin');
-});
+/**
+ * Initialize plugin
+ */
+add_action('init', 'wordpress_plugin', 1);
 
-add_action('admin_enqueue_scripts', function ($hook) {
-    if ('toplevel_page_custompage' != $hook) {
-        return;
-    }
-    wordpress_plugin_enqueue_asset('wordpress-plugin-admin');
-});
-
+/**
+ * Static accessor for plugin container
+ *
+ * @return array
+ */
 function wordpress_plugin()
 {
-    static $wordpressPlugin;
-    if (!$wordpressPlugin) {
-        $wordpressPlugin = [];
-        do_action('wordpress_plugin', $wordpressPlugin);
+    static $container;
+    if (!$container) {
+        $container = [];
+        /**
+         * Action runs when plugin is initialized
+         *
+         * @param array $container Plugin container
+         */
+        do_action('wordpress_plugin', $container);
     }
-    return $wordpressPlugin;
+    return $container;
 }
 
+/** Init admin UI after plugin loads */
+add_action( 'wordpress_plugin', function (){
+    add_action('init', function () {
+        wordpress_plugin_register_asset('wordpress-plugin-admin');
+    });
 
-add_action('admin_menu', function () {
-    add_menu_page(
-        __('Custom Menu Title', 'wordpress-plugin'),
-        'custom menu',
-        'manage_options',
-        'custompage',
-        function () {
-            wordpress_plugin_enqueue_asset('wordpress-plugin-admin');
-            esc_html_e('Admin Page Test', 'wordpress-plugin');
-            echo '<div id="wordpress-plugin-admin"></div>';
+    add_action('admin_enqueue_scripts', function ($hook) {
+        if ('toplevel_page_custompage' != $hook) {
+            return;
         }
-    );
+        wordpress_plugin_enqueue_asset('wordpress-plugin-admin');
+    });
+
+    add_action('admin_menu', function () {
+        add_menu_page(
+            __('Custom Menu Title', 'wordpress-plugin'),
+            'custom menu',
+            'manage_options',
+            'custompage',
+            function () {
+                wordpress_plugin_enqueue_asset('wordpress-plugin-admin');
+                esc_html_e('Admin Page Test', 'wordpress-plugin');
+                echo '<div id="wordpress-plugin-admin"></div>';
+            }
+        );
+    });
+
 });
+
+
 
 /**
  * Register an asset
  *
- * @param $handle
+ * @since 0.0.1
+ * @param string $handle
  */
 function wordpress_plugin_register_asset($handle)
 {
@@ -70,7 +94,8 @@ function wordpress_plugin_register_asset($handle)
 /**
  * Enqueue an asset
  *
- * @param $handle
+ * @since 0.0.1
+ * @param string $handle
  */
 function wordpress_plugin_enqueue_asset($handle)
 {
