@@ -32,9 +32,15 @@ readline.question(`What is your plugin's slug? Used for translation domain, main
     readline.question(`Root Namespace`, rootNamespace => {
         readline.question(`Plugin name?`, pluginName => {
             readline.question(`Github username?`, githubUserName => {
-                shell.sed('-i', originalNamespace, rootNamespace, 'composer.json');
+                let originalNamespace = 'WordPressPlugin';
                 changeNameInPhpFiles({slug,rootNamespace,pluginName,originalNamespace});
                 changeNameInMdFiles({pluginName,slug,githubUserName});
+                //Replace slug in pages/admin entry point
+                shell.sed('-i', "wordpress-plugin", slug,  `pages/admin/index.js`);
+                //Replace name in package.json
+                shell.sed('-i', "@shelob9/wordpress-plugin", `@${githubUserName}/${slug}`,  'package.json');
+                //replace namespace in composer.json
+                shell.sed('-i', originalNamespace, rootNamespace, 'composer.json');
                 readline.close()
             });
         });

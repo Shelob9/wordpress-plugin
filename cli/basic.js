@@ -30,6 +30,8 @@ readline.question(`What is your plugin's slug? Used for translation domain, main
             shell.cp( '.github/workflows/test-js.yml', `${slug}/.github/workflows/test-js.yml`);
             //Replace slug in entry point
             shell.sed('-i', "wordpress-plugin", slug,  `${slug}/admin/index.js`);
+            //delete import test
+            shell.rm( `${slug}/__tests__/test-import.js` );
             readline.close()
         });
     });

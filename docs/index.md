@@ -8,6 +8,9 @@ This plugin is a template. You can create a new Github project from this repo us
 
 There is a CLI for renaming things, or you can rename things manually. 
 
+Notes:
+- When you first install with Yarn, many packages will prompted for what version to install, choose the latest.
+
 ### Rename With ClI
 
 You can create two different versions of the plugin, using the CLI

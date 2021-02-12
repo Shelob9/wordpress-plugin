@@ -29,6 +29,16 @@ This template has one "entry point" with the handle of  "admin". It is used for 
 - Run `yarn build`
 - Check that `build/$handle.js` and `build/$handle.asset.php` where created.
 
+## Local Development
+
+Feel free to supply your own local development environment of choice. [wp-env](https://developer.wordpress.org/block-editor/packages/packages-env/) will work without any configuration, if you have Docker installed:
+
+```vue
+npx wp-env start
+```
+
+- [http://localhost:8888/](http://localhost:8888/)
+
 ## Contributing
 
 Please feel free to [open a pull request](https://github.com/Shelob9/wordpress-plugin/pulls) if you would like to contribute.
