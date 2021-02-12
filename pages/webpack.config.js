@@ -3,7 +3,12 @@ const path = require("path");
 const isProduction = "production" === process.env.NODE_ENV;
 
 let entry = {};
-["admin"].forEach(
+/**
+ * Array of entry points
+ */
+let entryPoints = ["admin"]
+
+entryPoints.forEach(
 	(entryPoint) => {
 		entry[entryPoint] = path.resolve(process.cwd(), `${entryPoint}/index.js`);
 	}

@@ -10,13 +10,21 @@
 
 The steps to generate your own plugin are documented in [Getting Started](https://shelob9.github.io/wordpress-plugin/).
 
-Short version:
+
+### All The Things
+
+This option includes everything: local dev, Typescript, composer autoloader, PHP tests, JavaScript tests, etc.
 
 - Create [a new git repo based on this template](https://github.com/Shelob9/wordpress-plugin/generate).
 - Clone that repo locally
 - Install
     - `yarn`
-- `yarn rename`
+- Rename plugin and update translation domain, fucnction prefix, namespace, etc.
+    - `yarn rename`
+
+### Basic 
+
+This version has less things, it does not use Yarn workspace or Typescript or composer. It generates one PHP file that can load JS/CSS and a WordPress-friendly webpack that can have any number of entry points.
 
 ## Documentation
 

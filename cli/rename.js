@@ -4,53 +4,36 @@ const readline = require('readline').createInterface({
     output: process.stdout
 });
 const shell = require('shelljs');
-
+const mdSedFactory = require( './lib/mdSedFactory');
+const phpSedFactory = require( './lib/phpSedFactory');
 /**
  * Rewrite plugin name, slug, function prefix and namespace in php files
- *
- * @param slug
- * @param rootNamespace
- * @param pluginName
  */
-function changeNameInPhpFiles({slug,rootNamespace,pluginName}){
-    let slugWithUnderscore = slug.replace('-', '_' );
-    let originalNamespace = 'WordPressPlugin';
-    function sed(file) {
-        shell.sed('-i',  originalNamespace, rootNamespace, file);
-        shell.sed( '-i', "wordpress-plugin",  slug ,file);
-        shell.sed( '-i', "wordpress_plugin",  slugWithUnderscore ,file);
-    }
+function changeNameInPhpFiles({slug,rootNamespace,pluginName,}){
+    let sed = phpSedFactory({slug,rootNamespace})
     shell.mv( 'wordpress-plugin.php', `${slug}.php` );
     sed(`${slug}.php`);
     shell.sed('-i', 'PLUGIN_NAME', pluginName, `${slug}.php`);
-    shell.sed('-i', originalNamespace, rootNamespace, 'composer.json');
     shell.ls('**/*.php').forEach(sed);
 }
 
-
 function changeNameInMdFiles({pluginName,slug,githubUserName}){
-    function sed(fileName) {
-        shell.sed('-i', 'PLUGIN_NAME', pluginName,fileName);
-        shell.sed('-i', 'wordpress-plugin', slug, fileName);
-        shell.sed('-i', 'Shelob9/wordpress-plugin', `${githubUserName}/${slug}`, fileName);
-    }
+    const mdSed = mdSedFactory({pluginName,slug,githubUserName})
     shell.mv( '_README.md', 'README.md' );
     sed('README.md');
     shell.rm( 'docs/index.md');
-    shell.ls('docs/*.md').forEach(sed);
+    shell.ls('docs/*.md').forEach(mdSed);
     shell.cp( 'README.md', 'docs/index.md');
-
-
 }
 
 
-
 readline.question(`What is your plugin's slug? Used for translation domain, main file name, etc.`, slug => {
-    slug = slug.replace(/\W/g, '');
+    slug = slug.replace(/\W/g, '').toLowerCase();
     readline.question(`Root Namespace`, rootNamespace => {
         readline.question(`Plugin name?`, pluginName => {
             readline.question(`Github username?`, githubUserName => {
-                changeNameInPhpFiles({slug,rootNamespace,pluginName});
+                shell.sed('-i', originalNamespace, rootNamespace, 'composer.json');
+                changeNameInPhpFiles({slug,rootNamespace,pluginName,originalNamespace});
                 changeNameInMdFiles({pluginName,slug,githubUserName});
                 readline.close()
             });
