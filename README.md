@@ -6,6 +6,18 @@
 ![PHP Unit Tests](https://github.com/Shelob9/wordpress-plugin/workflows/PHP%20Unit%20Tests/badge.svg)
 ![WordPress Tests](https://github.com/Shelob9/wordpress-plugin/workflows/WordPress%20Tests/badge.svg)
 
+## Creating Your Own
+
+The steps to generate your own plugin are documented in [Getting Started](https://shelob9.github.io/wordpress-plugin/).
+
+Short version:
+
+- Create [a new git repo based on this template](https://github.com/Shelob9/wordpress-plugin/generate).
+- Clone that repo locally
+- Install
+    - `yarn`
+- `yarn rename`
+
 ## Documentation
 
 - [Getting Started](https://shelob9.github.io/wordpress-plugin/)
@@ -13,7 +25,6 @@
 - [JavaScript](https://shelob9.github.io/wordpress-plugin/javascript)
 - [Local Development](https://shelob9.github.io/wordpress-plugin/local-dev)
 - [CI/CD](https://shelob9.github.io/wordpress-plugin/cicd)
-
 
 
 ## Contributing

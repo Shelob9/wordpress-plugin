@@ -22,9 +22,7 @@
 		"shelljs": "^0.8.4",
 		"wsrun": "^5.2.0"
 	},
-	"bin": {
-		"plugin": "./bin/cli.js"
-	},
+
 	"scripts": {
 		"packages-update": "wp-scripts packages-update",
 		"start": "yarn wsrun start",
@@ -33,6 +31,6 @@
 		"storybook": "yarn c storybook",
 		"test:ci": "yarn c test --ci && yarn p test --ci",
 		"build": "yarn c build && yarn p build",
-		"plugin": "./bin/cli.js"
+		"rename": "node ./cli/rename.js"
 	}
 }
