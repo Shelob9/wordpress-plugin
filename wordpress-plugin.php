@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: WordPress plugin
+ * Plugin Name: PLUGIN_NAME
  */
 
 /**
@@ -27,7 +27,7 @@ function wordpress_plugin()
     if (!$container) {
         $container = [];
         /**
-         * Action runs when plugin is initialized
+         * Action runs when PLUGIN_NAME is initialized
          *
          * @param array $container Plugin container
          */
