@@ -31,6 +31,7 @@
 		"storybook": "yarn c storybook",
 		"test:ci": "yarn c test --ci && yarn p test --ci",
 		"build": "yarn c build && yarn p build",
-		"rename": "node ./cli/rename.js"
+		"rename": "node ./cli/rename.js",
+		"rename:basic": "node ./cli/basic.js"
 	}
 }

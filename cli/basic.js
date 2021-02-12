@@ -12,11 +12,13 @@ readline.question(`What is your plugin's slug? Used for translation domain, main
     readline.question(`Plugin name?`, pluginName => {
         readline.question(`Github username?`, githubUserName => {
             const mdSed = mdSedFactory({pluginName,slug,githubUserName});
-
+            let phpSed = phpSedFactory({slug})
             shell.cp( '-R', 'pages', slug );
             shell.cp( '_README_BASIC.md', `${slug}/README.md`);
             mdSed( `${slug}/README.md` );
-            shell.cp( 'wordpress-plugin.php', `${slug}/wordpress-plugin.php`);
+            shell.cp( 'wordpress-plugin.php', `${slug}/${slug}.php`);
+            phpSed( `${slug}/${slug}.php` );
+            shell.sed('-i', "PLUGIN_NAME", pluginName,  `${slug}/${slug}.php`);
             readline.close()
         });
     });
