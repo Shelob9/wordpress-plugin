@@ -33,6 +33,9 @@ After making your own version, I recommend you follow these steps, **before** ru
     - `git clone https://github.com/Shelob9/wordpress-plugin`
 - Composer install
     - `composer install`
+- Yarn install.
+    - `yarn`
+    - [Use Yarn 1.x, not npm](https://dev.to/shelob9/why-i-use-yarn-not-npm-dkk)
 - Ensure unit tests pass
     - `composer test`
 - Start WordPress
