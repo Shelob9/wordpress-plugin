@@ -57,12 +57,11 @@ add_action( 'wordpress_plugin', function (){
     add_action('admin_menu', function () {
         add_menu_page(
             __('PLUGIN_NAME', 'wordpress-plugin'),
-            'custom menu',
+            __('PLUGIN_NAME', 'wordpress-plugin'),
             'manage_options',
-            'custompage',
+            'wordpress-plugin-admin',
             function () {
-                wordpress_plugin_enqueue_asset('wordpress-plugin-admin');
-                esc_html_e('Admin Page Test', 'wordpress-plugin');
+                wp_enqueue_script('wordpress-plugin-admin');
                 echo '<div id="wordpress-plugin-admin"></div>';
             }
         );
