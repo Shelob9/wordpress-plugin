@@ -9,7 +9,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.3'
       # Install composer with cache
       ## See https://github.com/marketplace/actions/setup-php-action#cache-composer-dependencies
       - name: Get composer cache directory
