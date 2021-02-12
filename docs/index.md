@@ -4,7 +4,45 @@ This is my -- [Josh Pollock](https://joshpress.net) -- opinionated boilerplate a
 
 ## Creating A Plugin
 
-This plugin is a template. You can create a new Github project from this repo using the "Use This Template" button, or by downloading the plugin from Github. 
+This plugin is a template. You can create a new Github project from this repo using the "Use This Template" button, or by downloading the plugin from Github.
+
+There is a CLI for renaming things, or you can rename things manually. 
+
+### Rename With ClI
+
+You can create two different versions of the plugin, using the CLI
+
+#### Everything
+
+This option includes everything: local dev, Typescript, composer autoloader, PHP tests, JavaScript tests, etc.
+
+- Create [a new git repo based on this template](https://github.com/Shelob9/wordpress-plugin/generate).
+- Clone that repo locally
+- Install
+    - `yarn`
+- Rename plugin and update translation domain, fucnction prefix, namespace, etc.
+    - `yarn rename`
+
+#### Basic 
+
+This version has less things, it does not use Yarn workspace or Typescript or composer. It generates one PHP file that can load JS/CSS and a WordPress-friendly webpack that can have any number of entry points.
+
+- Copy or clone this repo locally.
+    - `git clone git@github.com:Shelob9/wordpress-plugin.git`
+- Install
+    - `yarn`
+- Rename plugin and update translation domain, function's prefix, namespace, etc.
+    - `yarn rename:basic`
+- This will create a directory named for your plugin slug.
+    - Copy that somewhere else.
+    - Delete everything else.
+- Switch to directory with the new plugin in it
+- Install
+    - `yarn`
+- Build
+    - `yarn build`
+
+### Manual Renaming
 
 After making your own version, I recommend you follow these steps, **before** running `composer install`:
 

@@ -3,7 +3,7 @@
 ## Development Quick Start
 
 - Git clone:
-    - `git clone https://github.com/Shelob9/wordpress-plugin`
+    - `git clone git@github.com:Shelob9/wordpress-plugin.git`
 - Install.
     - `yarn`
 - Build JS/CSS

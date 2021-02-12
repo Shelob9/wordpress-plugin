@@ -5,10 +5,12 @@
  */
 
 /**
- * Load the autoloader
+ * Include the autoloader
  */
 add_action( 'plugins_loaded', function (){
-    include __DIR__ . '/vendor/autoload.php';
+    if( file_exists(__DIR__ . '/vendor/autoload.php')){
+        include __DIR__ . '/vendor/autoload.php';
+    }
 });
 
 /**
@@ -38,20 +40,23 @@ function wordpress_plugin()
 
 /** Init admin UI after plugin loads */
 add_action( 'wordpress_plugin', function (){
+    //Register assets
     add_action('init', function () {
         wordpress_plugin_register_asset('wordpress-plugin-admin');
     });
 
+    //Enqueue admin assets on admin page only
     add_action('admin_enqueue_scripts', function ($hook) {
         if ('toplevel_page_custompage' != $hook) {
             return;
         }
-        wordpress_plugin_enqueue_asset('wordpress-plugin-admin');
+        wp_enqueue_script('wordpress-plugin-admin');
     });
 
+    //Register menu page
     add_action('admin_menu', function () {
         add_menu_page(
-            __('Custom Menu Title', 'wordpress-plugin'),
+            __('PLUGIN_NAME', 'wordpress-plugin'),
             'custom menu',
             'manage_options',
             'custompage',
@@ -62,14 +67,13 @@ add_action( 'wordpress_plugin', function (){
             }
         );
     });
-
 });
 
 
 
 /**
  * Register an asset
- *
+ **
  * @since 0.0.1
  * @param string $handle
  */
@@ -86,18 +90,7 @@ function wordpress_plugin_register_asset($handle)
             $assets['version']
         );
         wp_enqueue_script($handle);
-    } else {
-        var_dump(__DIR__ . "/build/$_handle.asset.php");
     }
 }
 
-/**
- * Enqueue an asset
- *
- * @since 0.0.1
- * @param string $handle
- */
-function wordpress_plugin_enqueue_asset($handle)
-{
-    wp_enqueue_script($handle);
-}
+

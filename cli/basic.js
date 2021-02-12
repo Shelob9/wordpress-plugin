@@ -24,8 +24,12 @@ readline.question(`What is your plugin's slug? Used for translation domain, main
             //And rename things.
             phpSed( `${slug}/${slug}.php` );
             shell.sed('-i', "PLUGIN_NAME", pluginName,  `${slug}/${slug}.php`);
+            shell.mkdir( `${slug}/.github`);
+            shell.mkdir( `${slug}/.github/workflows`);
             //Copy JS test action
             shell.cp( '.github/workflows/test-js.yml', `${slug}/.github/workflows/test-js.yml`);
+            //Replace slug in entry point
+            shell.sed('-i', "wordpress-plugin", slug,  `${slug}/admin/index.js`);
             readline.close()
         });
     });
