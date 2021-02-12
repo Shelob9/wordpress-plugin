@@ -13,6 +13,8 @@
 - Yarn install.
     - `yarn`
     - [Use Yarn 1.x, not npm](https://dev.to/shelob9/why-i-use-yarn-not-npm-dkk)
+- Build JS/CSS
+    - `yarn build`
 - Ensure unit tests pass
     - `composer test`
 - Start WordPress
