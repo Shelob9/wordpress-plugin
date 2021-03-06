@@ -8,7 +8,7 @@ const mdSedFactory = require( './lib/mdSedFactory');
 const phpSedFactory = require( './lib/phpSedFactory');
 
 readline.question(`What is your plugin's slug? Used for translation domain, main file name, etc.`, slug => {
-    slug = slug.replace(/\W/g, '').toLowerCase();
+    slug = slug.replace(/[^a-zA-Z0-9-_]+/ig,'').toLowerCase();
     readline.question(`Plugin name?`, pluginName => {
         readline.question(`Github username?`, githubUserName => {
             const mdSed = mdSedFactory({pluginName,slug,githubUserName});
