@@ -16,7 +16,7 @@ readline.question(`What is your plugin's slug? Used for translation domain, main
             //Copy everything in pages to new dir
             shell.cp( '-R', 'pages', slug );
             //Copy readme basic in place of package README
-            shell.cp( '_README_BASIC.md', `${slug}/README.md`);
+            shell.cp( 'cli/templates/_README_BASIC.md', `${slug}/README.md`);
             //And rename things.
             mdSed( `${slug}/README.md` );
             //Copy main plugin file
@@ -27,7 +27,7 @@ readline.question(`What is your plugin's slug? Used for translation domain, main
             shell.mkdir( `${slug}/.github`);
             shell.mkdir( `${slug}/.github/workflows`);
             //Copy JS test action
-            shell.cp( '.github/workflows/test-js.yml', `${slug}/.github/workflows/test-js.yml`);
+            shell.cp( 'cli/templates/test-js.yml', `${slug}/.github/workflows/test-js.yml`);
             //Replace slug in entry point
             shell.sed('-i', "wordpress-plugin", slug,  `${slug}/admin/index.js`);
             //Build in the right directory

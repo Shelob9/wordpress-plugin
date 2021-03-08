@@ -19,7 +19,7 @@ function changeNameInPhpFiles({slug,rootNamespace,pluginName,}){
 
 function changeNameInMdFiles({pluginName,slug,githubUserName}){
     const mdSed = mdSedFactory({pluginName,slug,githubUserName})
-    shell.mv( '_README.md', 'README.md' );
+    shell.mv( 'cli/templates/_README.md', 'README.md' );
     sed('README.md');
     shell.rm( 'docs/index.md');
     shell.ls('docs/*.md').forEach(mdSed);
