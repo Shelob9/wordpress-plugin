@@ -17,8 +17,8 @@ archive.on('error', function(err){
 archive.pipe(output);
 
 archive.append(fs.createReadStream(
-    __dirname + '/time-block.php'
-), { name: 'time-block.php' });
+    __dirname + '/PLUGIN_NAME.php'
+), { name: 'PLUGIN_NAME.php' });
 
 archive.directory('build', '/build');
 

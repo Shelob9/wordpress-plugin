@@ -15,6 +15,8 @@
 - Test all files once
     - `yarn test`
     - `yarn test --ci`
+- Create an installable zip file of your plugin.
+  - `yarn zip`
 
 ## Entry Points
 

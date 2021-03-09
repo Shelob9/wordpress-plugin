@@ -7,6 +7,19 @@ const shell = require('shelljs');
 const mdSedFactory = require( './lib/mdSedFactory');
 const phpSedFactory = require( './lib/phpSedFactory');
 
+function packageJson(slug, extraScripts = undefined) {
+    const fs = require('fs');
+    let packageJson = JSON.parse(fs.readFileSync(`${slug}/package.json`, 'utf8'));
+
+    packageJson.name = slug;
+
+    if (extraScripts) {
+        packageJson.scripts = Object.assign(packageJson.scripts, extraScripts)
+    }
+
+    fs.writeFileSync(`${slug}/package.json`, JSON.stringify(packageJson));
+    
+}
 readline.question(`What is your plugin's slug? Used for translation domain, main file name, etc.`, slug => {
     slug = slug.replace(/[^a-zA-Z0-9-_]+/ig,'').toLowerCase();
     readline.question(`Plugin name?`, pluginName => {
@@ -36,7 +49,10 @@ readline.question(`What is your plugin's slug? Used for translation domain, main
             //Build in the right directory
             shell.sed('-i', "../build", "/build",  `${slug}/webpack.config.js`);
             //delete import test
-            shell.rm( `${slug}/__tests__/test-import.js` );
+            shell.rm(`${slug}/__tests__/test-import.js`);
+            packageJson(slug, {
+                "zip": "yarn build && node makeZip.js"
+            })
             readline.close()
         });
     });
