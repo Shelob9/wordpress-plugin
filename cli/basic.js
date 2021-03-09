@@ -27,7 +27,10 @@ readline.question(`What is your plugin's slug? Used for translation domain, main
             shell.mkdir( `${slug}/.github`);
             shell.mkdir( `${slug}/.github/workflows`);
             //Copy JS test action
-            shell.cp( 'cli/templates/test-js.yml', `${slug}/.github/workflows/test-js.yml`);
+            shell.cp('cli/templates/test-js.yml', `${slug}/.github/workflows/test-js.yml`);
+            //Copy zipper
+            shell.cp('cli/templates/makeZip.js', `${slug}/makeZip.js`);
+            shell.sed('-i', "PLUGIN_NAME", slug, `${slug}/makeZip.js`);
             //Replace slug in entry point
             shell.sed('-i', "wordpress-plugin", slug,  `${slug}/admin/index.js`);
             //Build in the right directory
