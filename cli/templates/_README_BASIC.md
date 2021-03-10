@@ -20,9 +20,17 @@
 
 ## Entry Points
 
-This template has one "entry point" with the handle of  "admin". It is used for a custom admin page. If you want to add additional entry points, for example if you want to add blocks or to have separate JavaScript/ CSS for the front-end, follow these steps:
+## `admin`
 
-## To Add A New Entry Point
+This entry point is used for a WordPress settings page in wp-admin.
+
+### `block`
+
+A gutenberg block
+
+### To Add A New Entry Point
+
+If you want to add additional entry points, for example if you want to add blocks or to have separate JavaScript/ CSS for the front-end, follow these steps:
 
 - Choose a one word handle for the entry point
 - Create a directory named for the handle.

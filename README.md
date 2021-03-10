@@ -16,9 +16,9 @@ This option includes everything: local dev, Typescript, composer autoloader, PHP
 
 - [Documentation](https://shelob9.github.io/wordpress-plugin#everything)
 
-### Basic 
+### Basic
 
-This version has less things, it does not use Yarn workspace or Typescript or composer. It generates one PHP file that can load JS/CSS and a WordPress-friendly webpack that can have any number of entry points.
+This version has less things, it does not use Yarn workspace or Typescript or composer. It generates one PHP file that can load JS/CSS and a WordPress-friendly webpack config for a React-powered admin interface and a block.
 
 - [Documentation](https://shelob9.github.io/wordpress-plugin#basic)
 

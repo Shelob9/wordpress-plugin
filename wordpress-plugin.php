@@ -7,8 +7,8 @@
 /**
  * Include the autoloader
  */
-add_action( 'plugins_loaded', function (){
-    if( file_exists(__DIR__ . '/vendor/autoload.php')){
+add_action('plugins_loaded', function () {
+    if (file_exists(__DIR__ . '/vendor/autoload.php')) {
         include __DIR__ . '/vendor/autoload.php';
     }
 });
@@ -39,12 +39,16 @@ function wordpress_plugin()
 }
 
 /** Init admin UI after plugin loads */
-add_action( 'wordpress_plugin', function (){
+add_action('wordpress_plugin', function () {
     //Register assets
     add_action('init', function () {
         wordpress_plugin_register_asset('wordpress-plugin-admin');
     });
-
+    //Register block
+    time_block_register_asset('wordpress-plugin-block');
+    register_block_type('wordpress-plugin/block', array(
+        'editor_script' => 'wordpress-plugin-block',
+    ));
     //Enqueue admin assets on admin page only
     add_action('admin_enqueue_scripts', function ($hook) {
         if ('toplevel_page_custompage' != $hook) {
@@ -78,7 +82,7 @@ add_action( 'wordpress_plugin', function (){
  */
 function wordpress_plugin_register_asset($handle)
 {
-    $_handle = str_replace('wordpress-plugin-', '', $handle );
+    $_handle = str_replace('wordpress-plugin-', '', $handle);
     if (file_exists(__DIR__ . "/build/$_handle.asset.php")) {
         // automatically load dependencies and version
         $assets = include __DIR__ . "/build/$_handle.asset.php";
@@ -91,5 +95,3 @@ function wordpress_plugin_register_asset($handle)
         wp_enqueue_script($handle);
     }
 }
-
-

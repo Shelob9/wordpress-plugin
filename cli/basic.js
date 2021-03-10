@@ -24,8 +24,9 @@ readline.question(`What is your plugin's slug? Used for translation domain, main
     slug = slug.replace(/[^a-zA-Z0-9-_]+/ig,'').toLowerCase();
     readline.question(`Plugin name?`, pluginName => {
         readline.question(`Github username?`, githubUserName => {
+            //sed functions for rewriting strings in files
             const mdSed = mdSedFactory({pluginName,slug,githubUserName});
-            let phpSed = phpSedFactory({slug})
+            let phpOrJsSed = phpSedFactory({ slug });
             //Copy everything in pages to new dir
             shell.cp( '-R', 'pages', slug );
             //Copy readme basic in place of package README
@@ -35,8 +36,18 @@ readline.question(`What is your plugin's slug? Used for translation domain, main
             //Copy main plugin file
             shell.cp( 'wordpress-plugin.php', `${slug}/${slug}.php`);
             //And rename things.
-            phpSed( `${slug}/${slug}.php` );
-            shell.sed('-i', "PLUGIN_NAME", pluginName,  `${slug}/${slug}.php`);
+            //main plugin file
+            phpOrJsSed( `${slug}/${slug}.php` );
+            shell.sed('-i', "PLUGIN_NAME", pluginName, `${slug}/${slug}.php`);
+            //Javascript entry points
+            ['admin', 'blocks'].map(entry => {
+                let fileName = `${slug}/${entry}/index.js`
+                phpOrJsSed( fileName );
+                shell.sed('-i', "PLUGIN_NAME", pluginName, fileName);
+            });
+          
+            
+            //Setup workflows
             shell.mkdir( `${slug}/.github`);
             shell.mkdir( `${slug}/.github/workflows`);
             //Copy JS test action
