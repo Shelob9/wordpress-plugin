@@ -1,7 +1,6 @@
 
 import { registerBlockType } from "@wordpress/blocks";
 import { InspectorControls,useBlockProps } from "@wordpress/block-editor";
-import { useBlockProps } from '@wordpress/block-editor';
 
 let attributes = {
     content: {
