@@ -45,7 +45,7 @@ add_action('wordpress_plugin', function () {
         wordpress_plugin_register_asset('wordpress-plugin-admin');
     });
     //Register block
-    time_block_register_asset('wordpress-plugin-block');
+    wordpress_plugin_register_asset('wordpress-plugin-block');
     register_block_type('wordpress-plugin/block', array(
         'editor_script' => 'wordpress-plugin-block',
     ));
