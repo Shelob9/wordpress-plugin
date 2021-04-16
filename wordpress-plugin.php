@@ -45,9 +45,9 @@ add_action('wordpress_plugin', function () {
         wordpress_plugin_register_asset('wordpress-plugin-admin');
     });
     //Register block
-    wordpress_plugin_register_asset('wordpress-plugin-block');
+    wordpress_plugin_register_asset('wordpress-plugin-blocks');
     register_block_type('wordpress-plugin/block', array(
-        'editor_script' => 'wordpress-plugin-block',
+        'editor_script' => 'wordpress-plugin-blocks',
     ));
     //Enqueue admin assets on admin page only
     add_action('admin_enqueue_scripts', function ($hook) {
@@ -92,6 +92,6 @@ function wordpress_plugin_register_asset($handle)
             $assets['dependencies'],
             $assets['version']
         );
-        wp_enqueue_script($handle);
+       
     }
 }

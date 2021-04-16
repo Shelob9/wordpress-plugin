@@ -1,41 +1,30 @@
 
 import { registerBlockType } from "@wordpress/blocks";
-import { InspectorControls,useBlockProps } from "@wordpress/block-editor";
+import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
+import { TextControl } from '@wordpress/components';
 
 let attributes = {
     content: {
         type: 'string',
         required: true,
-        default: ''
+        default: 'Inside of block'
     },
-    className: {
-        type: 'string',
-        required: false,
-        default: ''
-    },
-}
-
-const Render = ({ attributes, blockProps }) => {
-    const blockProps = useBlockProps({
-        className: attributes.className ? attributes.attributes : '',
-    });
-    return (<p {...blockProps}> { attributes.content}</p>);
 }
 
 const Edit = ({ attributes, setAttributes }) => {
     return (
-        <div>
+        <div { ...useBlockProps() }>
             <InspectorControls>
                 Settings
             </InspectorControls>
-            <div>
-                <Render
-                    attributes={attributes}
-                />
-            </div>
+			<TextControl
+				value={ attributes.content }
+				onChange={ ( val ) => setAttributes( { content: val } ) }
+			/>
         </div>
     )
 }
+
 registerBlockType( 'wordpress-plugin/block', {
     title: 'PLUGIN_NAME',
     apiVersion: 2,
@@ -47,5 +36,13 @@ registerBlockType( 'wordpress-plugin/block', {
     },
     attributes,
     edit: Edit,
-    save: ({attributes}) => <Render attributes={attributes} />,
+    save: ({attributes}) => {
+        return (
+            <div
+                { ...useBlockProps.save() }
+            >
+                { attributes.content }
+            </div>
+        );
+    }
 } );
