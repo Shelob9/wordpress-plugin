@@ -2,17 +2,14 @@ const defaultConfig = require("@wordpress/scripts/config/webpack.config");
 const path = require("path");
 const isProduction = "production" === process.env.NODE_ENV;
 
+let entryPoints = require( './entryPoints' );
 let entry = {};
-/**
- * Array of entry points
- */
-let entryPoints = ["admin","blocks"]
-
 entryPoints.forEach(
 	(entryPoint) => {
 		entry[entryPoint] = path.resolve(process.cwd(), `${entryPoint}/index.js`);
 	}
 );
+
 module.exports = {
 	mode: isProduction ? "production" : "development",
 	...defaultConfig,
